@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <title>Pule com a Brie!</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <a href="index.html" id="back-btn">← Voltar</a>
+    <div id="ThreeJS"></div>
+    
+    <div id="gameOverCard" class="card gameOver-card">
+        <h2>Oh não! A Brie bateu! 🥕</h2>
+        <p>Tente novamente, coelhinha!</p>
+        <button onclick="resetarJogo()" class="link-btn">Tentar de novo!</button>
+    </div>
+
+    <script src="js/Three.js"></script>
+    <script src="js/Detector.js"></script>
+    <script src="js/game.js"></script>
+    <script>
+        document.addEventListener('keydown', function(event) {
+            if ((event.keyCode === 32 || event.keyCode === 38) && character.position.y === 10) {
+                velocidadeY = 7;
+            }
+        });
+    </script>
+</body>
+</html>
