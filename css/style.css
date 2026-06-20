@@ -53,12 +53,14 @@ body { overflow: hidden; background-color: #ffe4e1; }
     border: 1px solid rgba(255, 200, 200, 0.4);
     border-radius: 24px;
     padding: 20px;
-    width: 60%;
+    width: 60%; 
     max-width: 450px;
     text-align: center;
     box-shadow: 0 15px 40px rgba(255, 150, 150, 0.2);
     pointer-events: auto;
     color: #5a4a4a;
+    transform: scale(0.65); 
+    transform-origin: top center;
 }
 
 h1 { font-size: 1.8rem; margin-bottom: 15px; color: #ff77aa; }
