@@ -177,7 +177,7 @@ var tempo = clock.getElapsedTime();
             item.position.y = 45 + Math.sin(tempo * 2 + i) * 5; 
             if (dist > -20 && dist < 20 && Math.abs(character.position.y - item.position.y) < 30) {
                 item.visible = false; 
-                item.scale.set(0, 0, 0);
+                item.scale.set(0.001, 0.001, 0.001);
             }
         }
 
