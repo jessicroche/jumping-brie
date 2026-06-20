@@ -52,8 +52,8 @@ body { overflow: hidden; background-color: #ffe4e1; }
     background: #fffaf5; 
     border: 1px solid rgba(255, 200, 200, 0.4);
     border-radius: 24px;
-    padding: 40px;
-    width: 90%;
+    padding: 20px;
+    width: 80%;
     max-width: 450px;
     text-align: center;
     box-shadow: 0 15px 40px rgba(255, 150, 150, 0.2);
