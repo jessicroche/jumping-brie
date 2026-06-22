@@ -7,7 +7,7 @@ document.addEventListener('keydown', function(event) {
     }
 
 
-    if (event.keyCode === 40 || event.keyCode === 83) {
+    if (event.keyCode === 40 || event.keyCode === 83 || event.keyCode === 16) {
         if (!abaixada) {
             abaixada = true;
             event.preventDefault();
@@ -16,7 +16,7 @@ document.addEventListener('keydown', function(event) {
 });
 
 document.addEventListener('keyup', function(event) {
-    if (event.keyCode === 40 || event.keyCode === 83) {
+    if (event.keyCode === 40 || event.keyCode === 83 || event.keyCode === 16) {
         abaixada = false;
     }
 });
