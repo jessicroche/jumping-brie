@@ -104,3 +104,16 @@ h1 { font-size: 1.8rem; margin-bottom: 15px; color: #ff77aa; }
     margin: 20px auto 0 auto;
     display: block;
 }
+
+#scoreBoard {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
+    font-family: 'Segoe UI', sans-serif;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 10px 20px;
+    border-radius: 12px;
+    color: #ffaa00;
+    pointer-events: none;
+}

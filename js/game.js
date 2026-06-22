@@ -15,6 +15,7 @@ var velocidadeY = 0;
 var modoJogo = window.location.pathname.includes('brie.html'); //modo de jogo
 var bateu = false;
 var animationId;
+var pontos=0;
 // evita erros no resto do site
 if (document.getElementById('ThreeJS')) {
     init();
@@ -178,6 +179,8 @@ var tempo = clock.getElapsedTime();
             if (dist > -20 && dist < 20 && Math.abs(character.position.y - item.position.y) < 30) {
                 item.visible = false; 
                 item.scale.set(0.001, 0.001, 0.001);
+                pontos++;
+                atualizarPontos();
             }
         }
 
@@ -203,7 +206,8 @@ function gameOver() {
 function resetarJogo() {
     // esconde o cartaozinho de game over
     document.getElementById('gameOverCard').style.display = 'none';
-    
+    pontos=0; // reseta a pontuacao
+    atualizarPontos();
     // poe a brie no ponto inicial e reseta os itens do cenario
     character.position.set(-50, 10, 0);
     for(var i = 0; i < cenarioItens.length; i++) {
@@ -215,6 +219,14 @@ function resetarJogo() {
     bateu = false; // reseta a flag da colisao
     animate(); // anima tudo de novo
 }
+
+function atualizarPontos() {
+    var display = document.getElementById('pontosDisplay');
+    if (display) {
+        display.innerText = pontos;
+    }
+}
+
 function render() 
 {
     renderer.render( scene, camera );
