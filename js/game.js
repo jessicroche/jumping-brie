@@ -11,6 +11,7 @@ var orelhaEsq, orelhaDir, cabeca, focinho, olhoEsq, olhoDir, corpo, rabo;
 var abaixada = false;
 var velocidadePista = 2.5;
 var dificuldadeMultiplicador = 1.0;
+var tempoManual = 0;
 
 
 function init() {
@@ -64,8 +65,10 @@ function update() {
     var tempo = clock.getElapsedTime();
     if (!modoJogo) {
         rodarIA(cenarioItens);
+    } else if(!bateu) {
+        tempoManual += 1/60;
     }
-    var novaDificuldade = 1.0 + (Math.floor(tempo / 10) * 0.2);
+    var novaDificuldade = 1.0 + (Math.floor(tempoManual / 10) * 0.2);
     if (novaDificuldade > 1.8) {
     dificuldadeMultiplicador = 1.8;
     } else {
@@ -89,6 +92,7 @@ function resetarJogo() {
     pontos = 0; 
     atualizarPontos();
     dificuldadeMultiplicador = 1.0;
+    tempoManual = 0;
     
     character.position.set(-50, 10, 0);
     for(var i = 0; i < cenarioItens.length; i++) {
