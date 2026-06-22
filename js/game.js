@@ -134,6 +134,9 @@ function init()
 
 function animate()
 {
+    if (animationId) {
+        cancelAnimationFrame(animationId); //resolve loop do navegador
+    }
     animationId = requestAnimationFrame( animate );
     render();      
     update();
@@ -141,8 +144,9 @@ function animate()
 
 function update()
 {
-var tempo = clock.getElapsedTime();
+    var tempo = clock.getElapsedTime();
     
+    // gravidade e pulo
     character.position.y += velocidadeY;
     if (character.position.y > 10 || velocidadeY !== 0) {
         velocidadeY -= 0.5; 
@@ -160,31 +164,39 @@ var tempo = clock.getElapsedTime();
         item.position.x -= 2.5; 
         var dist = item.position.x - character.position.x;
 
-        // colisao
-        if (modoJogo && item.tipo === 'cerca') {
-            if (dist > -5 && dist < 5 && character.position.y <= 12 && !bateu) {
-                bateu = true;
-                gameOver();
-            }
-        }
-
         // pulo
         if (!modoJogo && item.visible && dist > 0 && dist < 40 && character.position.y === 10) {
             velocidadeY = 7;
         }
 
-        // cenourinha
+        // coleta cenourinha
         if (item.tipo === 'cenoura' && item.visible) {
             item.position.y = 45 + Math.sin(tempo * 2 + i) * 5; 
             if (dist > -20 && dist < 20 && Math.abs(character.position.y - item.position.y) < 30) {
                 item.visible = false; 
                 item.scale.set(0.001, 0.001, 0.001);
-                pontos++;
-                atualizarPontos();
+                if (modoJogo) {
+                    pontos++;
+                    atualizarPontos();
+                }
             }
         }
+        
+        // colisao
+        else if (item.tipo !== 'cenoura') {
+            
+            if (modoJogo && !bateu) {
+                
+                var colidiuNoX = dist > -15 && dist < 15; 
+                var colidiuNoY = character.position.y < 22; 
 
-        // tira o item da tela e reseta ele
+                if (colidiuNoX && colidiuNoY) {
+                    bateu = true;
+                    gameOver();
+                }
+            }
+        }
+        // reseta o item quando ele sai da tela
         if (item.position.x < -150) {
             item.position.x += 800;
             item.visible = true; 
