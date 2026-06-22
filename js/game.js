@@ -9,6 +9,8 @@ var animationId;
 var pontos = 0;
 var orelhaEsq, orelhaDir, cabeca, focinho, olhoEsq, olhoDir, corpo, rabo;
 var abaixada = false;
+var velocidadePista = 2.5;
+var dificuldadeMultiplicador = 1.0;
 
 
 function init() {
@@ -60,9 +62,14 @@ function animate() {
 
 function update() {
     var tempo = clock.getElapsedTime();
-
     if (!modoJogo) {
         rodarIA(cenarioItens);
+    }
+    var novaDificuldade = 1.0 + (Math.floor(tempo / 10) * 0.2);
+    if (novaDificuldade > 1.8) {
+    dificuldadeMultiplicador = 1.8;
+    } else {
+    dificuldadeMultiplicador = novaDificuldade;
     }
     atualizarFisicaBrie(tempo);
     aplicarAnimacaoAbaixar();
@@ -81,6 +88,7 @@ function resetarJogo() {
     document.getElementById('gameOverCard').style.display = 'none';
     pontos = 0; 
     atualizarPontos();
+    dificuldadeMultiplicador = 1.0;
     
     character.position.set(-50, 10, 0);
     for(var i = 0; i < cenarioItens.length; i++) {

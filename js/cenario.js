@@ -50,7 +50,7 @@ function movimentarCenario(tempo) {
 
     for(var i = 0; i < cenarioItens.length; i++) {
         var item = cenarioItens[i];
-        item.position.x -= 2.5; 
+        item.position.x -= (velocidadePista * dificuldadeMultiplicador);
         var dist = item.position.x - character.position.x;
 
         if (!modoJogo && item.visible) {
