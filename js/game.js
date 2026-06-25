@@ -12,6 +12,7 @@ var abaixada = false;
 var velocidadePista = 2.5;
 var dificuldadeMultiplicador = 1.0;
 var tempoManual = 0;
+var decoracoes = [];
 
 
 function init() {
@@ -51,6 +52,7 @@ function init() {
     }, false);
     montarBrie(scene);
     gerarCenario(scene);
+    gerarDecoracoes(scene);
 }
 function animate() {
     if (animationId) { 
