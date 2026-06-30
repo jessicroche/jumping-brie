@@ -17,7 +17,7 @@ var decoracoes = [];
 
 function init() {
     scene = new THREE.Scene();
-    scene.fog = new THREE.FogExp2( 0xffe4e1, 0.002 );
+    scene.fog = new THREE.FogExp2( 0xc99a9c, 0.002 );
     
     var SCREEN_WIDTH = window.innerWidth, SCREEN_HEIGHT = window.innerHeight;
     camera = new THREE.PerspectiveCamera( 45, SCREEN_WIDTH / SCREEN_HEIGHT, 0.1, 20000);
@@ -37,7 +37,7 @@ function init() {
     var light = new THREE.DirectionalLight(0xffeedd, 1.2);
     light.position.set(100, 200, 100);
     scene.add(light);
-    scene.add(new THREE.AmbientLight(0x887766));
+    scene.add(new THREE.AmbientLight(0x776677));
     
     var floorGeom = new THREE.CubeGeometry(1000, 20, 100);
     var floorMat = new THREE.MeshLambertMaterial( { color: 0xc1e1c1 } ); 
