@@ -91,6 +91,10 @@ h1 { font-size: 1.8rem; margin-bottom: 15px; color: #ff77aa; }
     transform: translate(-50%, -50%);
     width: 90%;
     text-align: center;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 20%;
 }
 
 .gameOver-card h2 { 
